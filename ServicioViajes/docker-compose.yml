@@ -1,0 +1,45 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres-viajesdb
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 16092007mottajgm
+      POSTGRES_DB: viajesdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  servicio-viajes:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: servicio-viajes-app
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/viajesdb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=16092007mottajgm
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_SHOW_SQL=true
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQLDialect
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9092  # This will be ignored since Kafka is removed
+      - SPRING_KAFKA_CONSUMER_GROUP_ID=transporte-group
+      - SPRING_KAFKA_CONSUMER_AUTO_OFFSET_RESET=earliest
+      - SPRING_KAFKA_CONSUMER_PROPERTIES_SESSION_TIMEOUT_MS=60000
+      - SPRING_KAFKA_CONSUMER_PROPERTIES_HEARTBEAT_INTERVAL_MS=10000
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
+volumes:
+  postgres-data:
+
+networks:
+  app-network:
+    driver: bridge

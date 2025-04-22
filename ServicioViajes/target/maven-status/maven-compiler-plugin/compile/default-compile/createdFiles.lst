@@ -1,0 +1,17 @@
+com\viajesytransportes\ServicioViajes\exception\CustomExceptions$ConflictException.class
+com\viajesytransportes\ServicioViajes\saga\event\TransporteEvent.class
+com\viajesytransportes\ServicioViajes\exception\CustomExceptions$NotFoundException.class
+com\viajesytransportes\ServicioViajes\ServicioViajesApplication.class
+com\viajesytransportes\ServicioViajes\dto\request\TransporteRequestDTO.class
+com\viajesytransportes\ServicioViajes\exception\CustomExceptions.class
+com\viajesytransportes\ServicioViajes\repository\TransporteRepository.class
+com\viajesytransportes\ServicioViajes\controller\TransporteController.class
+com\viajesytransportes\ServicioViajes\saga\producer\TransporteEventProducer.class
+com\viajesytransportes\ServicioViajes\saga\consumer\TransporteEventConsumer.class
+com\viajesytransportes\ServicioViajes\exception\GlobalExceptionHandler.class
+com\viajesytransportes\ServicioViajes\saga\event\TransporteEventType.class
+com\viajesytransportes\ServicioViajes\service\impl\TransporteServiceImpl.class
+com\viajesytransportes\ServicioViajes\dto\response\TransporteResponseDTO.class
+com\viajesytransportes\ServicioViajes\config\KafkaConfig.class
+com\viajesytransportes\ServicioViajes\model\Transporte.class
+com\viajesytransportes\ServicioViajes\service\TransporteService.class
